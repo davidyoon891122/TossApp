@@ -21,8 +21,25 @@ class SecuritiesViewController: UIViewController {
     
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
+        stackView.backgroundColor = .orange
         stackView.axis = .vertical
+        stackView.distribution = .equalSpacing
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let newsView = NewsView(frame: .zero)
+//        let accountView = UIView()
+//        let interestStockView = UIView()
+        newsView.backgroundColor = .purple
+//        accountView.backgroundColor = .red
+//        interestStockView.backgroundColor = .brown
+//
+//        [newsView, accountView, interestStockView]
+//            .forEach{
+//                stackView.addArrangedSubview($0)
+//            }
+//
+        stackView.addArrangedSubview(newsView)
+        
         return stackView
     }()
     
@@ -58,6 +75,8 @@ private extension SecuritiesViewController {
     
     func addSubviews() {
         self.view.addSubview(self.scrollView)
+        self.scrollView.addSubview(self.contentView)
+        self.contentView.addSubview(self.stackView)
         
             
     }
@@ -68,6 +87,21 @@ private extension SecuritiesViewController {
         self.scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         self.scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         self.scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        
+        self.contentView.backgroundColor = .green
+        self.contentView.translatesAutoresizingMaskIntoConstraints = false
+        self.contentView.topAnchor.constraint(equalTo: self.scrollView.topAnchor).isActive = true
+        self.contentView.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor).isActive = true
+        self.contentView.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor).isActive = true
+        self.contentView.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor).isActive = true
+        self.contentView.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
+        self.contentView.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor).isActive = true
+        
+        self.stackView.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
+        self.stackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
+        self.stackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
+        self.stackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
+        
     }
     
     @objc func tapSettingButton() {
