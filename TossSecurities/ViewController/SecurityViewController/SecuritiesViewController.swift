@@ -47,7 +47,6 @@ class SecuritiesViewController: UIViewController {
         super.viewDidLoad()
         self.configureNavigation()
         
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -60,6 +59,7 @@ class SecuritiesViewController: UIViewController {
         self.setLayoutContraints()
     }
 }
+
 
 
 private extension SecuritiesViewController {
@@ -115,3 +115,6 @@ private extension SecuritiesViewController {
     
     
 }
+
+
+

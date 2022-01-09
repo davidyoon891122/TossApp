@@ -8,17 +8,22 @@
 import UIKit
 
 class NewsView: UIView {
+    
+    private let newsCellId = "newsCell"
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.dataSource = self
         tableView.delegate = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(NewsViewTableViewCell.self, forCellReuseIdentifier: newsCellId)
         return tableView
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .yellow
+        
     }
     
     required init?(coder: NSCoder) {
@@ -30,6 +35,7 @@ class NewsView: UIView {
         self.setLayoutConstraints()
     }
 }
+
 
 
 extension NewsView: UITableViewDelegate {
@@ -52,11 +58,23 @@ extension NewsView: UITableViewDataSource {
             cell.accessoryType = .disclosureIndicator
             cell.backgroundColor = .systemBackground
             cell.tintColor = .label
+            cell.selectionStyle = .none
+            return cell
+        } else if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: newsCellId, for: indexPath) as! NewsViewTableViewCell
             return cell
         }
         return UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 50
+        } else if indexPath.section == 1 {
+            return 150
+        }
+        return 50
+    }
     
 }
 
