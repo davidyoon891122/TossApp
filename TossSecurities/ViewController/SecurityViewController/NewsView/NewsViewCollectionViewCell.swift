@@ -12,6 +12,7 @@ class NewsViewCollectionViewCell: UICollectionViewCell {
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .gray
+        imageView.layer.cornerRadius = 15
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -39,13 +40,19 @@ class NewsViewCollectionViewCell: UICollectionViewCell {
 private extension NewsViewCollectionViewCell {
     func addSubviews() {
         addSubview(imageView)
-        //addSubview(titleLabel)
+        addSubview(titleLabel)
     }
     
     func setLayoutConstraint() {
-        imageView.topAnchor.constraint(equalTo: topAnchor, constant: 5).isActive = true
-        imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
+        imageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        imageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: 80).isActive = true
         imageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        
+        titleLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 10).isActive = true
+        titleLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        
     }
 }

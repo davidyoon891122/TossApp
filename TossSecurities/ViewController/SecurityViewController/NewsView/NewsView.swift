@@ -17,6 +17,8 @@ class NewsView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.register(NewsViewTableViewCell.self, forCellReuseIdentifier: newsCellId)
+        tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
         return tableView
     }()
     
@@ -71,11 +73,17 @@ extension NewsView: UITableViewDataSource {
         if indexPath.section == 0 {
             return 50
         } else if indexPath.section == 1 {
-            return 150
+            return 120
         }
         return 50
     }
     
+}
+
+extension NewsView: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
 }
 
 

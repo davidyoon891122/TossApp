@@ -13,6 +13,7 @@ class SecuritiesViewController: UIViewController {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .blue
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.showsVerticalScrollIndicator = false
         return scrollView
     }()
     
