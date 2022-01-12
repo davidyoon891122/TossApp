@@ -22,7 +22,6 @@ class NewsViewTableViewCell: UITableViewCell {
         collectionView.dataSource = self
         collectionView.register(NewsViewCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.decelerationRate = .fast
         collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
