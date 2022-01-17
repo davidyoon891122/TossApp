@@ -19,6 +19,7 @@ class NewsView: UIView {
         tableView.register(NewsViewTableViewCell.self, forCellReuseIdentifier: newsCellId)
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
+        tableView.isScrollEnabled = false
         return tableView
     }()
     
@@ -80,13 +81,6 @@ extension NewsView: UITableViewDataSource {
     
 }
 
-extension NewsView: UIGestureRecognizerDelegate {
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
-}
-
-
 private extension NewsView {
     func addSubviews() {
         self.addSubview(self.tableView)
@@ -97,5 +91,6 @@ private extension NewsView {
         self.tableView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         self.tableView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         self.tableView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        self.tableView.heightAnchor.constraint(equalToConstant: 170).isActive = true
     }
 }

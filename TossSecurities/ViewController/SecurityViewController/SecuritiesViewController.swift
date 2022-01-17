@@ -19,6 +19,7 @@ class SecuritiesViewController: UIViewController {
     
     private let contentView = UIView()
     
+    private let menuBar = MenuBar()
     
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
@@ -26,9 +27,13 @@ class SecuritiesViewController: UIViewController {
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.spacing = 0
         
         let newsView = NewsView(frame: .zero)
-//        let accountView = UIView()
+        let menuBar = MenuBar(frame: .zero)
+        let accountView = UIView()
+        accountView.heightAnchor.constraint(equalToConstant: 1000).isActive = true
+        accountView.backgroundColor = . gray
 //        let interestStockView = UIView()
         newsView.backgroundColor = .purple
 //        accountView.backgroundColor = .red
@@ -40,6 +45,8 @@ class SecuritiesViewController: UIViewController {
 //            }
 //
         stackView.addArrangedSubview(newsView)
+        stackView.addArrangedSubview(menuBar)
+        stackView.addArrangedSubview(accountView)
         
         return stackView
     }()
@@ -95,8 +102,7 @@ private extension SecuritiesViewController {
         self.contentView.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor).isActive = true
         self.contentView.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor).isActive = true
         self.contentView.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor).isActive = true
-        self.contentView.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
-        self.contentView.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor).isActive = true
+        self.contentView.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
         
         self.stackView.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
         self.stackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true

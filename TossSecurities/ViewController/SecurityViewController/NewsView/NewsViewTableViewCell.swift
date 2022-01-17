@@ -82,8 +82,9 @@ private extension NewsViewTableViewCell {
     func setLayoutConstraint() {
         collectionView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 16).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        //collectionView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
+        collectionView.heightAnchor.constraint(equalToConstant: 120).isActive = true
     }
 }
 
