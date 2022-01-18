@@ -58,8 +58,6 @@ extension MenuBar: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MenuBarCell
-        //let menuColor: [UIColor] = [.red,.orange,.yellow, .green, .blue]
-        //cell.backgroundColor = menuColor[indexPath.row]
         cell.titleLabel.text = menus[indexPath.row]
         return cell
     }
@@ -70,6 +68,16 @@ extension MenuBar: UICollectionViewDataSource {
 extension MenuBar: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width / 5, height: 50)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let constant = (collectionView.frame.width / 5) * CGFloat(indexPath.row)
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+            self.horizontalBarLeftAnchorConstraint?.constant = constant
+            self.layoutIfNeeded()
+        }, completion: nil)
+
     }
 }
 
