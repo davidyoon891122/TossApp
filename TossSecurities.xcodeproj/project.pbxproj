@@ -109,7 +109,7 @@
 			path = HomeViewController;
 			sourceTree = "<group>";
 		};
-		AD2A1C3E2781E8E800BA63DC /* ViewController */ = {
+		AD2A1C3E2781E8E800BA63DC /* Scene */ = {
 			isa = PBXGroup;
 			children = (
 				AD2A1C3A2781E35600BA63DC /* MainTabBarViewController.swift */,
@@ -117,7 +117,7 @@
 				AD2A1C3C2781E8C300BA63DC /* SecurityViewController */,
 				AD2A1C4027831C2500BA63DC /* PasswordViewController.swift */,
 			);
-			path = ViewController;
+			path = Scene;
 			sourceTree = "<group>";
 		};
 		AD2A1C3F2781E9AE00BA63DC /* AccountTableView */ = {
@@ -169,7 +169,7 @@
 		AD2B3CBA2779FC8C00E9A6FE /* TossSecurities */ = {
 			isa = PBXGroup;
 			children = (
-				AD2A1C3E2781E8E800BA63DC /* ViewController */,
+				AD2A1C3E2781E8E800BA63DC /* Scene */,
 				AD2B3CBB2779FC8C00E9A6FE /* AppDelegate.swift */,
 				AD2B3CBD2779FC8C00E9A6FE /* SceneDelegate.swift */,
 				AD2B3CC42779FC8D00E9A6FE /* Assets.xcassets */,

@@ -18,6 +18,7 @@ class NewsViewTableViewCell: UITableViewCell {
         
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .systemBackground
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(NewsViewCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
@@ -31,6 +32,7 @@ class NewsViewTableViewCell: UITableViewCell {
         self.selectionStyle = .none
         addSubviews()
         setLayoutConstraint()
+        backgroundColor = .systemBackground
     }
     
     required init?(coder: NSCoder) {
@@ -82,7 +84,6 @@ private extension NewsViewTableViewCell {
     func setLayoutConstraint() {
         collectionView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 16).isActive = true
-        //collectionView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
         collectionView.heightAnchor.constraint(equalToConstant: 120).isActive = true
     }

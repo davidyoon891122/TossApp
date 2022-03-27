@@ -30,6 +30,7 @@ class NewsViewCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         addSubviews()
         setLayoutConstraint()
+        backgroundColor = .systemBackground
     }
     
     required init?(coder: NSCoder) {

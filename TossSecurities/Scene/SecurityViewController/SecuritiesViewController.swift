@@ -19,8 +19,8 @@ class SecuritiesViewController: UIViewController {
     
     private let contentView = UIView()
     
-    private let menuBar = MenuBar()
-    
+    private var menuBar = MenuBar()
+    private var scrollViewTopConstraint: NSLayoutConstraint?
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.backgroundColor = .orange
@@ -30,7 +30,7 @@ class SecuritiesViewController: UIViewController {
         stackView.spacing = 0
         
         let newsView = NewsView(frame: .zero)
-        let menuBar = MenuBar(frame: .zero)
+        menuBar = MenuBar(frame: .zero)
         let accountView = UIView()
         accountView.heightAnchor.constraint(equalToConstant: 1000).isActive = true
         accountView.backgroundColor = . gray
@@ -54,6 +54,8 @@ class SecuritiesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureNavigation()
+        scrollView.delegate = self
+        
         
     }
     
@@ -66,8 +68,33 @@ class SecuritiesViewController: UIViewController {
         self.addSubviews()
         self.setLayoutContraints()
     }
+    
+    
 }
 
+
+extension SecuritiesViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y >= 170 {
+            menuBar.isHidden = true
+            //menuBar.removeFromSuperview()
+            view.addSubview(menuBar)
+            
+            scrollViewTopConstraint?.isActive = false
+            scrollView.topAnchor.constraint(equalTo: menuBar.bottomAnchor).isActive = true
+            
+            menuBar.translatesAutoresizingMaskIntoConstraints = false
+            menuBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+            menuBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            menuBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            menuBar.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            
+        } else {
+            menuBar.isHidden = false
+        }
+        
+    }
+}
 
 
 private extension SecuritiesViewController {
@@ -91,7 +118,8 @@ private extension SecuritiesViewController {
     
     
     func setLayoutContraints() {
-        self.scrollView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        scrollViewTopConstraint = self.scrollView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor)
+        scrollViewTopConstraint?.isActive = true
         self.scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         self.scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         self.scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true

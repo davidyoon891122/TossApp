@@ -10,6 +10,7 @@ import UIKit
 class NewsView: UIView {
     
     private let newsCellId = "newsCell"
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.dataSource = self
@@ -25,7 +26,7 @@ class NewsView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .yellow
+        backgroundColor = .systemBackground
         
     }
     

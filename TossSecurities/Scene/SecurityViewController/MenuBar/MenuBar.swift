@@ -38,6 +38,7 @@ class MenuBar: UIView {
         addSubviews()
         setLayoutConstraint()
         configureHorizontalBar()
+        backgroundColor = .systemBackground
     }
     
     required init?(coder: NSCoder) {
